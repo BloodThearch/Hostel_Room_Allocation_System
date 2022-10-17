@@ -3,7 +3,9 @@
 
 # Requirements
 Python dependencies:
-```pip install django psycopg2```
+```
+pip install django psycopg2
+```
 
 External dependencies:
 ```
