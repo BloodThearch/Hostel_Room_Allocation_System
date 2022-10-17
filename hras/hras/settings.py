@@ -75,8 +75,14 @@ WSGI_APPLICATION = "hras.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hras_database',
+        'USER': 'hras_admin',
+        'PASSWORD': 'verystrongpwd',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
