@@ -1,5 +1,5 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MaxValueValidator
 
 # Create your models here.
 class Accounts(models.Model):
@@ -8,14 +8,27 @@ class Accounts(models.Model):
     lastName = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     passwd = models.CharField(max_length=50)
+    gender = models.CharField(
+        max_length=7,
+        choices=[
+            ('Genders', 'Male Female')
+        ]
+    )
     age = models.IntegerField()
     class Meta:
         abstract = True
 
 class StudentAccounts(Accounts):
     rollNo = models.IntegerField()
-    branch = models.Choices([
-        ('BE', 'Bachelors in Engineering'),
-        # Add more branches later
-    ])
-    parentContactNo = PhoneNumberField
+    branch = models.CharField(
+        max_length=10,
+        choices=[
+            ('Branches', 'BE BTECH')
+        ]
+    )
+    parentContactNo = models.PositiveIntegerField(validators=[MaxValueValidator(9999999999)])
+    currentRoomBooked = models.CharField(max_length=10)
+    CGPA = models.DecimalField(max_digits=2, decimal_places=2)
+
+class StaffAccounts(Accounts):
+    staffID = models.IntegerField()
