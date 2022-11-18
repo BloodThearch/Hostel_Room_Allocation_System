@@ -14,7 +14,7 @@ class Accounts(models.Model):
             ('Genders', 'Male Female')
         ]
     )
-    age = models.IntegerField()
+    # dob = models.DateField(auto_now=False, auto_now_add=False)
     class Meta:
         abstract = True
 
