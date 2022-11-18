@@ -2,12 +2,13 @@ from django.db import models
 from django.core.validators import MaxValueValidator
 
 # Create your models here.
-class Accounts(models.Model):
+class Account(models.Model):
     accountID = models.IntegerField(primary_key=True)
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     passwd = models.CharField(max_length=50)
+    personalContactNo = models.PositiveIntegerField(validators=[MaxValueValidator(9999999999)])
     gender = models.CharField(
         max_length=7,
         choices=[
@@ -18,7 +19,7 @@ class Accounts(models.Model):
     class Meta:
         abstract = True
 
-class StudentAccounts(Accounts):
+class StudentAccount(Account):
     rollNo = models.IntegerField()
     branch = models.CharField(
         max_length=10,
@@ -30,5 +31,5 @@ class StudentAccounts(Accounts):
     currentRoomBooked = models.CharField(max_length=10)
     CGPA = models.DecimalField(max_digits=2, decimal_places=2)
 
-class StaffAccounts(Accounts):
+class StaffAccount(Account):
     staffID = models.IntegerField()
