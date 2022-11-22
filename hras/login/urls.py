@@ -17,5 +17,6 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.showLoginPage, name='loginPage'),
+    path("", views.showLoginPage, name="loginPage"),
+    path("loginCheck/", views.loginCheck, name="loginCheck")
 ]
