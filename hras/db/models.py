@@ -55,3 +55,29 @@ class StudentAccount(Account):
 
 class StaffAccount(Account):
     staffID = models.IntegerField()
+
+class Session(models.Model):
+    sessionID = models.AutoField(primary_key=True)
+    startDate = models.DateField(auto_now=False, auto_now_add=False)
+    endDate = models.DateField(auto_now=False, auto_now_add=False)
+    minCGPA = models.DecimalField(max_digits=4, decimal_places=2)
+    maxCGPA = models.DecimalField(max_digits=4, decimal_places=2)
+    baseRate = models.DecimalField(max_digits=8, decimal_places=2)
+    costWithAC= models.DecimalField(max_digits=8, decimal_places=2)
+
+class Hostel(models.Model):
+    name = models.CharField(max_length=50)
+    numberOfRooms = models.PositiveIntegerField()
+
+class Room(models.Model):
+    roomNumber = models.PositiveIntegerField()
+    hostelName = models.CharField(max_length=50)
+    occupancy = models.BinaryField()
+    availableSeats = models.PositiveIntegerField()
+    roomType = models.CharField(
+        max_length=10,
+        choices=[
+            ('AC', 'AC'),
+            ('NONAC', 'NONAC')
+        ]
+    )
