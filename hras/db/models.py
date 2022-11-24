@@ -72,7 +72,7 @@ class Hostel(models.Model):
 class Room(models.Model):
     roomNumber = models.PositiveIntegerField()
     hostelName = models.CharField(max_length=50)
-    occupancy = models.BinaryField()
+    occupancy = models.PositiveIntegerField(default=0)
     availableSeats = models.PositiveIntegerField()
     roomType = models.CharField(
         max_length=10,
@@ -81,3 +81,4 @@ class Room(models.Model):
             ('NONAC', 'NONAC')
         ]
     )
+    blockTimeEnd = models.TimeField(default=timezone.now, auto_now=False)

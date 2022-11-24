@@ -1,5 +1,5 @@
 {% extends 'index.html' %}
-{% load static %}
+
 {% block headerBlock %}
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -40,49 +40,17 @@
 {% endblock headerBlock %}
 
 {% block mainContent %}
-<section class="section-bg">
-  <div class="container">
-    <div class="row">
-      {% comment %} <div class="col-4"></div> {% endcomment %}
-      <h1 class="text-center">Dashboard</h1>
-    </div>
 
-    {% if accType == "Staff" %}
-    <a href="{% url 'sessionCreation' %}"><div class="my-3 text-center"><button type="submit" class="btn btn-success">Create Session</button></div></a>
-    <div class="my-3 text-center"><button type="submit" class="btn btn-success">View Sessions</button></div>
-    <a href="{% url 'homePage' %}"><div class="my-3 text-center"><button type="submit" class="btn btn-danger">Log Out</button></div></a>
-    {% endif %}
+<section id="contact" class="contact section-bg">
+    <div class="container">
 
-    {% if accType == "Student" %}
-    <hr>
-    <div class="row">
-      <h1>Sessions:</h1>
-    </div>
-    {% comment %} Session notification area {% endcomment %}
-    {% if booking == 'open' %}
-    <div class="row p-3" style="background-color: #b3ffba">
-      <div class="col-sm-3"><h2>Bookings open</h2></div>
-      <div class="col">
-        <a href="{% url 'hostelList' %}"><div class="mt-1"><button type="submit" class="btn btn-success">Start Booking!</button></div></a>
+      <div class="section-title">
+        <h2>Choose Type of Account:</h2>
       </div>
+      <a href="{% url 'studentSignup' %}"><div class="my-3 text-center"><button type="submit" class="btn btn-success">Student</button></div></a>
+      <a href="{% url 'staffSignup' %}"><div class="my-3 text-center"><button type="submit" class="btn btn-success">Staff</button></div></a>
+
     </div>
-    {% endif %}
-    {% if booking == 'closed' %}
-    <div class="row p-3" style="background-color: #b3ffba">
-      <div class="col-sm-3"><h2>Bookings Closed</h2></div>
-    </div>
-    {% endif %}
-    {% comment %} Session notification area end {% endcomment %}
+  </section>
 
-    <hr>
-
-    <div class="row">
-      <a href="#"><div class="my-3 text-center"><button type="submit" class="btn btn-success">Hostels Info</button></div></a>
-      <a href="{% url 'homePage' %}"><div class="my-3 text-center"><button type="submit" class="btn btn-danger">Log Out</button></div></a>
-    </div
-
-    {% endif %}
-
-  </div>
-</section>
 {% endblock mainContent %}

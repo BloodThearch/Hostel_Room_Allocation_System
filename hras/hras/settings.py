@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "db",
     "login",
     "dashboard",
-    "session"
+    "session",
+    "booking",
 ]
 
 MIDDLEWARE = [

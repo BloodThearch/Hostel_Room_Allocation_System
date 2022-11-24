@@ -20,6 +20,7 @@ class StudentRegistrationForm(ModelForm):
     class Meta:
         model = StudentAccount
         fields = "__all__"
+        exclude = ("currentRoomBooked",)
         widgets = {
             "firstName":forms.TextInput(attrs={'type':'text','class':'form-control'}),
             "lastName":forms.TextInput(attrs={'type':'text','class':'form-control'}),
@@ -28,7 +29,7 @@ class StudentRegistrationForm(ModelForm):
             "personalContactNo":forms.NumberInput(attrs={'type':'number','class':'form-control'}),
             "gender":forms.Select(attrs={'class':'form-control'}, choices=(('M', 'Male'),('F', 'Female'))),
             # Student related fields below
-            "rollno":forms.NumberInput(attrs={'type':'number','class':'form-control'}),
+            "rollNo":forms.NumberInput(attrs={'type':'number','class':'form-control'}),
             "branch":forms.Select(attrs={'class':'form-control'}, choices=(('BE', 'BE'),('BTECH', 'BTECH'))),
             "parentContactNo":forms.NumberInput(attrs={'type':'number','class':'form-control'}),
             "CGPA":forms.NumberInput(attrs={'type':'number','class':'form-control'}),

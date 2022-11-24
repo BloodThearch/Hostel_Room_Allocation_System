@@ -27,14 +27,14 @@
     <div class="container">
 
       <div class="section-title">
-        <h2>Create Session</h2>
+        <h2>Student Signup</h2>
         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
       </div>
 
       <div class="row">
         <div class="col-lg-3 col-md-2 col-sm-0 mt-5 d-flex"></div>
         <div class="col-lg-6 col-md-8 col-sm-12 mt-md-5 mt-sm-0 d-flex align-items-stretch">
-			<form action="{% url 'sessionCheck' %}" method="post" role="form" class="php-email-form">
+			<form action="{% url 'studentSignupCheck' %}" method="post" role="form" class="php-email-form">
 			{% csrf_token %}
             {{ form }}
             <div class="my-3 text-center"><button type="submit">Submit</button></div>

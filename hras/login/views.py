@@ -46,7 +46,8 @@ def loginCheck(request):
                 return render(request,'login.html',sendback)
         except:
             pass
-        print("out")
+        print("gender =", dictRecord['gender'])
+        request.session['email'] = dictRecord['email']
         if dictRecord["accType"] == "Student":
             return showDashboard(request, dictRecord)
         elif dictRecord["accType"] == "Staff":
