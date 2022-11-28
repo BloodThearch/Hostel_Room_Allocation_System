@@ -12,8 +12,8 @@ class SessionForm(ModelForm):
             "endDate":forms.DateInput(attrs={'type':'date', 'class':'form-control'}),
             "minCGPA":forms.NumberInput(attrs={'type':'number', 'class':'form-control'}),
             "maxCGPA":forms.NumberInput(attrs={'type':'number', 'class':'form-control'}),
-            "baseRate":forms.NumberInput(attrs={'type':'number', 'class':'form-control'}),
-            "costWithAC":forms.NumberInput(attrs={'type':'number', 'class':'form-control'})
+            #"baseRate":forms.NumberInput(attrs={'type':'number', 'class':'form-control'}),
+            #"costWithAC":forms.NumberInput(attrs={'type':'number', 'class':'form-control'})
         }
 
 class StudentRegistrationForm(ModelForm):

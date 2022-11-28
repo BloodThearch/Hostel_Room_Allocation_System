@@ -15,6 +15,7 @@ def showLoginPage(request):
 
 @csrf_exempt
 def loginCheck(request):
+    dictRecord = {}
     if request.method == "POST":
         email = request.POST["email"]
         pwd = request.POST["pwd"]
@@ -24,6 +25,7 @@ def loginCheck(request):
                 "passwd": pwd,
                 "err": err
             }
+        studentSuccess = True
         try:
             fetchedRecord = StudentAccount.objects.get(email=email)
             if str(pwd) == str(fetchedRecord.passwd):
@@ -35,7 +37,8 @@ def loginCheck(request):
             else:
                 return render(request, "login.html", sendback)
         except:
-            pass
+            studentSuccess = False
+        success = True
         try:
             fetchedRecord = StaffAccount.objects.get(email=email)
             if pwd == fetchedRecord.passwd:
@@ -45,12 +48,18 @@ def loginCheck(request):
             else:
                 return render(request,'login.html',sendback)
         except:
-            pass
-        print("gender =", dictRecord['gender'])
-        request.session['email'] = dictRecord['email']
-        if dictRecord["accType"] == "Student":
-            return showDashboard(request, dictRecord)
-        elif dictRecord["accType"] == "Staff":
-            return showDashboard(request, dictRecord)
-        return render(request, 'login.html', sendback)
+            success = False
+        if studentSuccess == True:
+            request.session['email'] = dictRecord['email']
+            if dictRecord["accType"] == "Student":
+                return showDashboard(request, dictRecord)
+            elif dictRecord["accType"] == "Staff":
+                return showDashboard(request, dictRecord)
+        if success == True:
+            request.session['email'] = dictRecord['email']
+            if dictRecord["accType"] == "Student":
+                return showDashboard(request, dictRecord)
+            elif dictRecord["accType"] == "Staff":
+                return showDashboard(request, dictRecord)
+        return render(request, 'login.html', {"err":"Please provide valid email or password."})
 

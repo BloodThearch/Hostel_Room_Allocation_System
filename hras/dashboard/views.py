@@ -17,6 +17,12 @@ def createCGPAList(email, dictRecord):
                 break
     except:
         pass
-    if StudentAccount.objects.get(email=email).currentRoomBooked != '0':
-        dictRecord['booking'] = 'closed'
+    try:
+        if StudentAccount.objects.get(email=email).currentRoomBooked != '0':
+            dictRecord['booking'] = 'closed'
+    except:
+        pass
     return dictRecord
+
+def hostelDesc(request):
+    return render(request, 'hostelDesc.html', {})

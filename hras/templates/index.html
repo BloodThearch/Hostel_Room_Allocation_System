@@ -45,13 +45,13 @@
         <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
         <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
       </div>
-      <div class="social-links d-none d-md-block">
+      {% comment %} <div class="social-links d-none d-md-block">
         {% with "twitter facebook instagram linkedin" as platforms %}
           {% for platformName in platforms.split %}
             <a href="#" class="{{ platformName }}"><i class = "bi bi-{{ platformName }}"></i></a>
           {% endfor %}
         {% endwith %}
-      </div>
+      </div> {% endcomment %}
     </div>
   </section>
 

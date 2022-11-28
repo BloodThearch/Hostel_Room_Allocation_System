@@ -18,4 +18,5 @@ from . import views
 
 urlpatterns = [
     path("", views.showDashboard, name="dashboard"),
+    path("hostelDesc", views.hostelDesc, name="hostelDesc")
 ]

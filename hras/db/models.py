@@ -9,7 +9,7 @@ class Account(models.Model):
     firstName = models.CharField(max_length=100)
     lastName = models.CharField(max_length=100)
     #dob = models.DateTimeField(default=timezone.now())
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
     passwd = models.CharField(max_length=50)
     personalContactNo = models.BigIntegerField(
         validators=[
@@ -36,7 +36,7 @@ class Account(models.Model):
         abstract = True
 
 class StudentAccount(Account):
-    rollNo = models.BigIntegerField()
+    rollNo = models.BigIntegerField(unique=True)
     branch = models.CharField(
         max_length=10,
         choices=[
@@ -51,10 +51,13 @@ class StudentAccount(Account):
         ]
     )
     currentRoomBooked = models.CharField(max_length=10, default='0')
-    CGPA = models.DecimalField(max_digits=4, decimal_places=2)
+    CGPA = models.DecimalField(max_digits=4, decimal_places=2,validators=[
+            MinValueValidator(0),
+            MaxValueValidator(10)
+        ])
 
 class StaffAccount(Account):
-    staffID = models.IntegerField()
+    staffID = models.IntegerField(unique=True)
 
 class Session(models.Model):
     sessionID = models.AutoField(primary_key=True)
@@ -62,8 +65,8 @@ class Session(models.Model):
     endDate = models.DateField(auto_now=False, auto_now_add=False)
     minCGPA = models.DecimalField(max_digits=4, decimal_places=2)
     maxCGPA = models.DecimalField(max_digits=4, decimal_places=2)
-    baseRate = models.DecimalField(max_digits=8, decimal_places=2)
-    costWithAC= models.DecimalField(max_digits=8, decimal_places=2)
+    #baseRate = models.DecimalField(max_digits=8, decimal_places=2)
+    #costWithAC= models.DecimalField(max_digits=8, decimal_places=2)
 
 class Hostel(models.Model):
     name = models.CharField(max_length=50)
@@ -93,8 +96,18 @@ class Room(models.Model):
     blockTimeEnd = models.TimeField(default=timezone.now, auto_now=False)
 
 class Transaction(models.Model):
-    cardNumber = models.BigIntegerField()
-    expiryMonth = models.PositiveIntegerField()
+    cardNumber = models.BigIntegerField(
+        validators=[
+            MinValueValidator(1000000000000000),
+            MaxValueValidator(10000000000000000-1)
+        ]
+    )
+    expiryMonth = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(12)
+        ]
+    )
     expiryYear = models.PositiveIntegerField()
     cardHolderName = models.CharField(max_length=200)
     securityCode = models.PositiveIntegerField()

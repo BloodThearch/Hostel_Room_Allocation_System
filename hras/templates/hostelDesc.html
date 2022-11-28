@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+
+{% block headerBlock %}
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center">
+
+    <h1 class="logo me-auto"><a href="{% url 'homePage' %}">HRAS</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="{% url 'homePage' %}">Home</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'homePage' %}#about">About</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'homePage' %}#contact">Contact</a></li>
+        {% comment %} <li><a class="getstarted scrollto" href="#about">Get Started</a></li> {% endcomment %}
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header><!-- End Header -->
+{% endblock headerBlock %}
+
+{% block mainContent %}
+
+<section id="contact" class="contact section-bg">
+    <div class="container">
+        <h1>Hostel O</h1>
+        <div style="font-size: 20px">
+            <p>Warden: Dr. Anil Arora<br>
+                Email ID: warden.o@thapar.edu, anil.arora@thapar.edu<br>
+                Contact: 084377-01902<br>
+                <br>
+                Caretakers: Mr. Jaspal Singh (099143-73087),<br>
+                Mr. Gurvinder Singh (098882-67007),<br>
+                Mr. Akash (073559-19839)<br>
+                Email ID: caretaker.o@thapar.edu<br>
+                Contact: 091156-08802<br></p>
+            <p>Hostel O is the newest addition to the string of state of the art hostel facilities at Thapar Institute campus. Hostel O is a 928-seater, air conditioned, double seater with shared washroom boy’s residence facility. Each room is fully furnished with all the living amenities including study table, chair, Almira, bookrack, shoe rack, mattress, geyser, curtains and dustbins. For convenience of the residents, Hostel O has water cooler, RO system, washing machine facilities as well. There are 4 elevators to make it easier for the students to move from ground floor to any of the floors. These elevators also have power backup in case of emergency. Housekeeping staff are available in the hostel to ensure proper cleanliness. A laundry system is also provided to the residents.</p>
+
+            <p>The hostel has a 24X7 Wi-Fi network for residents to access high speed Internet anywhere within hostel premises. Hostel O also has a state of the art gymnasium, having the most modern fitness training machines for residents. In addition, Hostel O has an excellent mess facility that caters to providing hygienic food to all hostel residents. The food mess is managed by an internationally renowned company, that ensures highest standards to quality. Hostel O has a well-maintained lawn and water bodies.</p>
+                
+            <p>Hostel O has proper security system with guards at entrances and in each block. It also includes Fire alarms within premises. An executive committee of the residents runs the day-to-day affairs of the hostel. Night canteen is also there with a variety of items. Caretakers are present in the hostel for providing their services to the residents.</p>
+        </div>
+        <hr>
+        <h1>Hostel K</h1>
+        <div style="font-size: 20px">
+            <p>Warden:Dr. Neeraj Kumar (Email id:- warden.k@thapar.edu)<br>
+
+                Contact N.o :-911-560-8898<br>
+                
+                Reception N.o :- +91-9115611521<br>
+                
+                Caretakers: Mr. Amandeep Joshi Email id:- caretaker.k@thapar.edu<br>
+                
+                Contact N.o :- +91-8283820711<br></p>
+            <p>Hostel-K is having 2 floors with 2 blocks. Each block is having separate arrangements of water purifiers &amp; bathrooms with geysers. There is high speed internet connection in each blocks. To keep students physically fit GYM facility is also provided to students to keep students updated with current affairs T.V. Room with sitting facility &amp; newspapers are also provided. Best quality of food is served in hostel mess. Best cleaning of provided in rooms and washrooms . indoor games T.T TABLES, CARROM BOARD, CHESS are available in hostel. 6 reading rooms, 1 laundry room, night mess, and 2 guest rooms are available for students and there parents for staying in hostel and big parking stand is available in outside of hostel, and big lawns are available inner and outer side hostels.</p>
+        </div>
+    </div>
+    {% comment %} <div class="my-3 text-center"><a href="{% url 'dashboard' %}"><button class="btn btn-success">Back</button></a></div> {% endcomment %}
+</section><!-- End Contact Section -->
+
+{% endblock mainContent %}

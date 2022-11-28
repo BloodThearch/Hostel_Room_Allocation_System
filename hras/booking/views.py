@@ -18,7 +18,7 @@ def roomList(request):
         rooms = Room.objects.filter(hostelName=hostelName).values()
         roomNoList = []
         for room in rooms:
-            if room["isBlocked"] == 1 and room["blockTimeEnd"] > timezone.now():
+            if room["isBlocked"] == 1 and room["blockTimeEnd"] > timezone.now().time():
                 pass
             else:
                 roomNoList.append([room["roomNumber"],room["roomType"]])
@@ -58,6 +58,18 @@ def paymentCheck(request):
         roomNumber = request.session["roomNumber"]
         amount = request.session["amount"]
 
+        sendback = {
+            "cardNumber":cardNumber,
+            "expiryMonth":expiryMonth,
+            "expiryYear":expiryYear,
+            "cardHolderName":cardHolderName,
+            "securityCode":securityCode,
+            "hostelName":hostelName,
+            "roomNumber":roomNumber,
+            "amount":amount,
+            'err':'Invalid Details.'
+        }
+
         success = True
         try:
             transaction = Transaction(
@@ -74,7 +86,7 @@ def paymentCheck(request):
         except:
             success=False
         if success==False:
-            return render(request, 'paymentPage.html', {'err':'Invalid Details.'})
+            return render(request, 'paymentPage.html', sendback)
         else:
             student = StudentAccount.objects.get(email=request.session['email'])
             student.currentRoomBooked = hostelName + " " + str(roomNumber)
