@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from db.models import Session
+from db.models import Session, StudentAccount
 
 # Create your views here.
 def showDashboard(request, dictRecord={}):
-    dictRecord = createCGPAList(dictRecord)
+    dictRecord = createCGPAList(request.session['email'], dictRecord)
     print('email =', request.session['email'])
     return render(request, 'dashboard.html', dictRecord)
 
-def createCGPAList(dictRecord):
+def createCGPAList(email, dictRecord):
     dictRecord['booking'] = 'closed'
     try:
         sessions = Session.objects.all().values()
@@ -17,4 +17,6 @@ def createCGPAList(dictRecord):
                 break
     except:
         pass
+    if StudentAccount.objects.get(email=email).currentRoomBooked != '0':
+        dictRecord['booking'] = 'closed'
     return dictRecord

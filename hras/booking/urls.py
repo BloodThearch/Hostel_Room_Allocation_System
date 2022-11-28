@@ -18,4 +18,7 @@ from . import views
 
 urlpatterns = [
     path("", views.hostelList, name="hostelList"),
+    path("roomList/", views.roomList, name="roomList"),
+    path("paymentPortal/", views.paymentPortal, name="paymentPortal"),
+    path("payementCheck/", views.paymentCheck, name='paymentCheck'),
 ]

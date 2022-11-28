@@ -16,7 +16,6 @@ try:
         room = Room(
             roomNumber = roomNumber,
             hostelName = hostelName,
-            occupancy = 0,
             availableSeats = availableSeats,
             roomType = roomType
         )

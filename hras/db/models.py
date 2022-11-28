@@ -68,6 +68,14 @@ class Session(models.Model):
 class Hostel(models.Model):
     name = models.CharField(max_length=50)
     numberOfRooms = models.PositiveIntegerField()
+    forGender = models.CharField(
+        max_length=7,
+        choices=[
+            ('M', 'Male'),
+            ('F', 'Female')
+        ],
+        default='M'
+    )
 
 class Room(models.Model):
     roomNumber = models.PositiveIntegerField()
@@ -81,4 +89,15 @@ class Room(models.Model):
             ('NONAC', 'NONAC')
         ]
     )
+    isBlocked = models.PositiveIntegerField(default=0)
     blockTimeEnd = models.TimeField(default=timezone.now, auto_now=False)
+
+class Transaction(models.Model):
+    cardNumber = models.BigIntegerField()
+    expiryMonth = models.PositiveIntegerField()
+    expiryYear = models.PositiveIntegerField()
+    cardHolderName = models.CharField(max_length=200)
+    securityCode = models.PositiveIntegerField()
+    hostelName = models.CharField(max_length=10)
+    roomNumber = models.PositiveIntegerField()
+    amount = models.DecimalField(max_digits=10,decimal_places=2)
